@@ -1,9 +1,9 @@
 
-## Launch a service directly from Amazon ECR Public
+# Launch a service directly from Amazon ECR Public
 
 You can directly launch container images of compatible web applications that are hosted on the Amazon ECR Public Gallery (https://gallery.ecr.aws/) as web services running on App Runner. When browsing the gallery, look for *Launch with App Runner* on the gallery page for an image. An image with this option is compatible with App Runner. For more information about the gallery, see Using the Amazon ECR Public Gallery (https://docs.aws.amazon.com/AmazonECR/latest/public/public-gallery.html) in the Amazon ECR Public user guide.
 
-*To launch a gallery image as an App Runner service*
+## Launch a gallery image as an App Runner service
 
 ![Lab-1](./images/Lab-1.png)
 
