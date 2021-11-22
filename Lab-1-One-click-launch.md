@@ -18,3 +18,5 @@ You can directly launch container images of compatible web applications that are
 
 5. Choose *Next*, review the settings, and then choose *Create & deploy*.
 
+## Use pull through cache from ECR Public to ECR
+[Lab-2](/Lab-2-ECR-Pul-through-cache.md)
