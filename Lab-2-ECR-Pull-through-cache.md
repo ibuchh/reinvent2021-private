@@ -28,16 +28,14 @@ aws configure add-model \
 
 ```bash
 #Setting the prefix for all the auto-created repository names for pull-through cache repositories
-export ECR_REPOSITORY_PREFIX="my-docker-hub"
-
-#Setting DockerHub upstream regsitry endpoint
-export DOCKER_HUB_UPSTREAM_ENDPOINT="registry-1.docker.io"
+export ECR_REPOSITORY_PREFIX="my-ecr-public"
 
 #Setting ECR Public upstream registry endpoint
-export ECR_PUBLIC_UPSTREAM_ENDPOINT="public.aws.ecr"
+export ECR_PUBLIC_UPSTREAM_ENDPOINT="public.ecr.aws"
 
 #Setting AWS region to be in IAD (us-east-1)
-export AWS_REGION="sa-east-1"s
+export AWS_REGION="sa-east-1"
+
 ```
 ECR allows customers to granularly manage their permissions at resource level. Pull-Through cache assumes Service Linked Role and FAS token for following actions:
 
@@ -64,7 +62,7 @@ The following command will set the rule to make a pull from particular upstream 
 ```bash
 aws ecr create-pull-through-cache-rule \
 --ecr-repository-prefix $ECR_REPOSITORY_PREFIX \
---upstream-registry-url $DOCKER_HUB_UPSTREAM_ENDPOINT \
+--upstream-registry-url $ECR_PUBLIC_UPSTREAM_ENDPOINT \
 --region $AWS_REGION
 ```
 We can list all the rules created with describe-pull-through-cache-rules command. 
@@ -93,7 +91,7 @@ aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --
 ## Pull the upstream repository nginx using the latest tag
 
 ```bash
-docker pull $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY_PREFIX/library/nginx:latest
+docker pull $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY_PREFIX/ubuntu/nginx:latest
 ```
 
 If the repository “$ECR_REPOSITORY_PREFIX/library/nginx” does not already exist in your registry, pull-through cache will  automatically create it for you for the pull.
@@ -101,7 +99,7 @@ If the repository “$ECR_REPOSITORY_PREFIX/library/nginx” does not already ex
 Amazon ECR syncs the upstream repositories in the common cache and syncs them further to customer’s account. This process might take around a minute for image of size 1gb. We can validate the sync to our account by running describe-images command and making sure that latest tag for nginx is present in the repository.
 
 ```bash
-aws ecr describe-images --repository-name $ECR_REPOSITORY_PREFIX/library/nginx --region $AWS_REGION
+aws ecr describe-images --repository-name $ECR_REPOSITORY_PREFIX/ubuntu/nginx --region $AWS_REGION
 ```
 
 Voila! This image can now be scanned, tagged and run on App runner just like any other Amazon ECR artifact!
