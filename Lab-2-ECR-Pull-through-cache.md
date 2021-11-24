@@ -56,7 +56,7 @@ All the configurations for Pull-through cache feature are managed via pull-throu
 
 ## CreatePullThroughCacheRule
 
-The following command will set the rule to make a pull from particular upstream registry along with EcrRepositoryPrefix, we will set the upstream registry to DockerHub and EcrRepositoryPrefix to be my-docker-hub in this lab. 
+The following command will set the rule to make a pull from particular upstream registry along with EcrRepositoryPrefix, we will set the upstream registry to ECR Public and EcrRepositoryPrefix to be my-ecr-public in this lab. 
 
 
 ```bash
