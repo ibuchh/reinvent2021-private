@@ -76,7 +76,13 @@ aws ecr describe-pull-through-cache-rules \
 
 Once we set up the rule, any public repository from defined upstream registry can be pulled-through. For making a docker pull into ECR,
 
-Let’s get the account id associated with the registry.
+Let’s get the account id associated with the registry. 
+First we need to install jq.
+
+```bash
+sudo yum install jq
+```
+Next you can get the `ACCOUNT_ID`
 
 ```bash
 ACCOUNT_ID=`aws sts get-caller-identity | jq --raw-output '.Account'`
