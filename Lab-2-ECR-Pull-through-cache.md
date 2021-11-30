@@ -34,7 +34,7 @@ export ECR_REPOSITORY_PREFIX="my-ecr-public"
 export ECR_PUBLIC_UPSTREAM_ENDPOINT="public.ecr.aws"
 
 #Setting AWS region to be in IAD (us-east-1)
-export AWS_REGION="sa-east-1"
+export AWS_REGION="us-east-1"
 
 ```
 ECR allows customers to granularly manage their permissions at resource level. Pull-Through cache assumes Service Linked Role and FAS token for following actions:
