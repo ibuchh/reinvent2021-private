@@ -47,7 +47,7 @@ This requires customers to have two permissions for themselves ecr:BatchImportUp
 ## Set Amazon ECR policy
 
 ```bash
-aws ecr put-registry-policy --policy-text file://example-registry-policy.json --region $AWS_REGION
+aws ecr put-registry-policy --policy-text file://ecr-registry-policy.json --region $AWS_REGION
 ```
 
 ## Pull-through Cache Rules
